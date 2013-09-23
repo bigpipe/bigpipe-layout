@@ -1,0 +1,27 @@
+{
+  "name": "bigpipe-layout",
+  "version": "0.0.1",
+  "description": "Supply default layout to Bigpipe pages.",
+  "main": "index.js",
+  "devDependencies": {
+    "chai": "1.7.x",
+    "mocha": "1.11.x",
+    "pre-commit": "0.0.x",
+    "bigpipe": "git://github.com/3rd-Eden/bigpipe.git#master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Moveo/bigpipe-layout.git"
+  },
+  "scripts": {
+    "test": "NODE_ENV=testing ./node_modules/.bin/mocha $(find test -name '*.test.js')"
+  },
+  "keywords": [
+    "Bigpipe",
+    "plugin",
+    "default",
+    "layout"
+  ],
+  "author": "Martijn Swaagman",
+  "license": "MIT"
+}
