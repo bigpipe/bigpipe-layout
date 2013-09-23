@@ -7,7 +7,17 @@ describe('Bigpipe default page layout plugin', function () {
   var layout = require('../')
     , Pipe = require('bigpipe')
     , expect = chai.expect
-    , server = Pipe.createServer(1337, {
+    , server;
+
+    layout.base = __dirname + '/fixtures/base.ejs';
+    beforeEach(function () {
+      server = Pipe.createServer(1337, {
+        public: __dirname,
         dist: '/tmp/dist'
-      });
+      }).use(layout);
+    });
+
+    afterEach(function () {
+      server = null;
+    });
 });

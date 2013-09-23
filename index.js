@@ -14,9 +14,14 @@ exports.name = 'layout';
  */
 exports.server = function server(bigpipe, options) {
   var temper = bigpipe.temper
+    , target = options('base')
     , original = temper.fetch
-    , layout = temper.fetch(options('base', process.cwd())).server
-    , once = true;
+    , once = true
+    , layout;
+
+  if(!target || 'string' !== typeof target) {
+    return bigpipe.emit('error', new Error('Please provide a valid layout template.'));
+  }
 
   /**
    * Shortcircuit original Temper#fetch and wrap a layout around it.
@@ -38,6 +43,7 @@ exports.server = function server(bigpipe, options) {
       if (file in bigpipe.compiler.alias) return output;
 
       data.partial = output;
+      layout = layout || original.call(temper, target).server;
       return layout(data);
     };
 
