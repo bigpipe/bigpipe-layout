@@ -9,5 +9,5 @@ describe('Bigpipe default page layout plugin', function () {
     , expect = chai.expect
     , server = Pipe.createServer(1337, {
         dist: '/tmp/dist'
-      }).use(layout);
+      });
 });
