@@ -19,12 +19,15 @@ exports.server = function server(bigpipe, options) {
     , once = true
     , layout;
 
+  //
+  // No valid base layout provided, return error.
+  //
   if(!target || 'string' !== typeof target) {
     return bigpipe.emit('error', new Error('Please provide a valid layout template.'));
   }
 
   /**
-   * Shortcircuit original Temper#fetch and wrap a layout around it.
+   * Shortcircuit original Temper#fetch once and wrap a layout around it.
    *
    * @param {String} file
    * @param {String} engine
