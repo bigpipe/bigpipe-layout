@@ -15,6 +15,7 @@ exports.name = 'layout';
 exports.server = function server(bigpipe, options) {
   var temper = bigpipe.temper
     , target = options('base')
+    , key = options('key', 'partial')
     , original = temper.fetch
     , once = true
     , layout;
@@ -45,7 +46,7 @@ exports.server = function server(bigpipe, options) {
       //
       if (file in bigpipe.compiler.alias) return output;
 
-      data.partial = output;
+      data[key] = output;
       layout = layout || original.call(temper, target).server;
       return layout(data);
     };
