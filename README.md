@@ -44,7 +44,7 @@ var layout = require('bigpipe-layout');
 //
 // Add valid path to base layout.
 //
-layout.options = { base: ''/path/to/base/layout.ejs' };
+layout.options = { base: '/path/to/base/layout.ejs' };
 layout.key = 'custom';
 
 //
