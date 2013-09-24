@@ -46,6 +46,7 @@ exports.server = function server(bigpipe, options) {
       //
       if (file in bigpipe.compiler.alias) return output;
 
+      data = data || {};
       data[key] = output;
       layout = layout || original.call(temper, target).server;
       return layout(data);

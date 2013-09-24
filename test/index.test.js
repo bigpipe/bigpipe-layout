@@ -9,13 +9,23 @@ describe('Bigpipe default page layout plugin', function () {
     , expect = chai.expect
     , server;
 
-  layout.options = {
-    base: __dirname + '/fixtures/base.ejs'
-  };
+  //
+  // Add port number generator.
+  //
+  var port = 1111;
+  Object.defineProperty(Pipe, 'port', {
+    get: function get() {
+      return port++;
+    }
+  });
 
   beforeEach(function () {
-    server = Pipe.createServer(1337, {
-      public: __dirname,
+    layout.options = {
+      base: __dirname + '/fixtures/base.ejs'
+    };
+
+    server = Pipe.createServer(Pipe.port, {
+      pages: __dirname + '/fixtures/pages',
       dist: '/tmp/dist'
     }).use(layout);
   });
@@ -33,8 +43,49 @@ describe('Bigpipe default page layout plugin', function () {
     expect(layout).to.have.property('name', 'layout');
   });
 
-  it('will emit an error if no valid layout is provided');
-  it('will insert content of page in layout');
-  it('allows insertion key to be changed');
-  it('shortcircuits compiled#server only once');
+  it('will emit an error if no valid layout is provided', function (done) {
+    layout.options = {};
+    server = Pipe.createServer(Pipe.port, {
+      public: __dirname,
+      dist: '/tmp/dist'
+    });
+
+    server.on('error', function (error) {
+      expect(error).to.be.an.instanceof(Error);
+      expect(error.message).to.equal('Please provide a valid layout template.');
+      done();
+    });
+
+    server.use(layout);
+  });
+
+  it('shortcircuits compiled#server', function () {
+    var compiled = server.temper.fetch(__dirname + '/fixtures/views/index.ejs');
+
+    expect(compiled).to.be.an('object');
+    expect(compiled).to.have.property('server');
+    expect(compiled.server).to.be.an('function');
+  });
+
+  it('will insert content of page in layout', function () {
+    var output = server.temper.fetch(__dirname + '/fixtures/views/index.ejs').server();
+    expect(output).to.equal('<div>\n  Some random content of a page!\n\n</div>\n');
+  });
+
+  it('allows insertion key to be changed', function () {
+    layout.options = {
+      key: 'test',
+      base: __dirname + '/fixtures/alternative.ejs'
+    };
+
+    server = Pipe.createServer(Pipe.port, {
+      public: __dirname,
+      dist: '/tmp/dist'
+    });
+
+    server.use(layout);
+
+    var output = server.temper.fetch(__dirname + '/fixtures/views/index.ejs').server();
+    expect(output).to.equal('<span>\n  Some random content of a page!\n\n</span>\n');
+  });
 });
