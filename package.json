@@ -1,6 +1,6 @@
 {
   "name": "bigpipe-layout",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Supply default layout to Bigpipe pages.",
   "main": "index.js",
   "devDependencies": {

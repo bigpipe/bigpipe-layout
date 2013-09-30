@@ -6,33 +6,12 @@ describe('Bigpipe default page layout plugin', function () {
 
   var layout = require('../')
     , Pipe = require('bigpipe')
+    , http = require('http')
     , expect = chai.expect
-    , server;
-
-  //
-  // Add port number generator.
-  //
-  var port = 1111;
-  Object.defineProperty(Pipe, 'port', {
-    get: function get() {
-      return port++;
-    }
-  });
-
-  beforeEach(function () {
-    layout.options = {
-      base: __dirname + '/fixtures/base.ejs'
-    };
-
-    server = Pipe.createServer(Pipe.port, {
-      pages: __dirname + '/fixtures/pages',
-      dist: '/tmp/dist'
-    }).use(layout);
-  });
-
-  afterEach(function () {
-    server = null;
-  });
+    , server = new Pipe(http.createServer(), {
+        public: __dirname,
+        dist: '/tmp/dist',
+      });
 
   it('exposes server side functionality', function () {
     expect(layout).to.have.property('server');
@@ -43,17 +22,12 @@ describe('Bigpipe default page layout plugin', function () {
     expect(layout).to.have.property('name', 'layout');
   });
 
-  it('will emit an error if no valid layout is provided', function (done) {
+  it('will emit an error if no valid layout is provided', function () {
     layout.options = {};
-    server = Pipe.createServer(Pipe.port, {
-      public: __dirname,
-      dist: '/tmp/dist'
-    });
 
     server.on('error', function (error) {
       expect(error).to.be.an.instanceof(Error);
       expect(error.message).to.equal('Please provide a valid layout template.');
-      done();
     });
 
     server.use(layout);
@@ -68,6 +42,12 @@ describe('Bigpipe default page layout plugin', function () {
   });
 
   it('will insert content of page in layout', function () {
+    layout.options = {
+      base: __dirname + '/fixtures/base.ejs'
+    };
+
+    server.use('inserter', layout);
+
     var output = server.temper.fetch(__dirname + '/fixtures/views/index.ejs').server();
     expect(output).to.equal('<div>\n  Some random content of a page!\n\n</div>\n');
   });
@@ -78,14 +58,12 @@ describe('Bigpipe default page layout plugin', function () {
       base: __dirname + '/fixtures/alternative.ejs'
     };
 
-    server = Pipe.createServer(Pipe.port, {
+    var alternative = new Pipe(http.createServer(), {
       public: __dirname,
-      dist: '/tmp/dist'
-    });
+      dist: '/tmp/dist',
+    }).use(layout);
 
-    server.use(layout);
-
-    var output = server.temper.fetch(__dirname + '/fixtures/views/index.ejs').server();
+    var output = alternative.temper.fetch(__dirname + '/fixtures/views/index.ejs').server();
     expect(output).to.equal('<span>\n  Some random content of a page!\n\n</span>\n');
   });
 });

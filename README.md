@@ -34,12 +34,14 @@ Bigpipe-layout is released in npm and can be installed using:
 npm install bigpipe-layout --save
 ```
 
-To use the plugin from Bigpipe, simply add it after Bigpipe is initialized.
-`bigpipe.use` will execute the plugin logic. Make sure the plugin name is unique,
-bigpipe-layout is provided with `layout` as default.
+To use the plugin from Bigpipe, simply add it after Bigpipe is initialized or
+add it to options#plugins. `bigpipe.use` will execute the plugin logic. Make sure
+the plugin name is unique, e.g. `layout` by default.
 
 ```js
-var layout = require('bigpipe-layout');
+// Usage after initialization
+var layout = require('bigpipe-layout')
+  , Pipe = require('bigpipe');
 
 //
 // Add valid path to base layout.
@@ -47,13 +49,27 @@ var layout = require('bigpipe-layout');
 layout.options = { base: '/path/to/base/layout.ejs' };
 layout.key = 'custom';
 
+var pipe = new Pipe(http.createServer(), {
+    pages: __dirname + '/pages',
+    public: __dirname + '/public'
+  }).listen(8080).use(layout);
+```
+
+```js
+// Usage through createServer options
+var layout = require('bigpipe-layout')
+  , Pipe = require('bigpipe');
+
 //
-// Start server.
+// Add valid path to base layout.
 //
-bigpipe.server = Bigpipe.createServer(8080, {
-  pages: __dirname + '/pages',
-  public: __dirname + '/public'
-}).use(layout);
+layout.options = { base: '/path/to/base/layout.ejs' };
+
+var pipe = Bigpipe.createServer(8080, {
+      pages: __dirname + '/pages',
+      public: __dirname + '/public',
+      plugins: [ layout ]
+    });
 ```
 
 ## License
