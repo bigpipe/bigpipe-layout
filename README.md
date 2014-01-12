@@ -1,4 +1,4 @@
-# Bigpipe-layout
+# Layout
 
 [![Build
 Status](https://travis-ci.org/Moveo/bigpipe-layout.png)](https://travis-ci.org/Moveo/bigpipe-layout)
@@ -28,7 +28,7 @@ Example of layout file using the [embedded js] template egine
 
 ## Installation
 
-Bigpipe-layout is released in npm and can be installed using:
+The layout plugin is released to npm and can be installed using:
 
 ```bash
 npm install bigpipe-layout --save
