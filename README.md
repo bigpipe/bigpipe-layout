@@ -41,7 +41,7 @@ the plugin name is unique, e.g. `layout` by default.
 ```js
 // Usage after initialization
 var layout = require('bigpipe-layout')
-  , Pipe = require('bigpipe');
+  , BigPipe = require('bigpipe');
 
 //
 // Add valid path to base layout.
@@ -49,7 +49,7 @@ var layout = require('bigpipe-layout')
 layout.options = { base: '/path/to/base/layout.ejs' };
 layout.key = 'custom';
 
-var pipe = new Pipe(http.createServer(), {
+var pipe = new BigPipe(http.createServer(), {
     pages: __dirname + '/pages',
     public: __dirname + '/public'
   }).listen(8080).use(layout);
@@ -58,14 +58,14 @@ var pipe = new Pipe(http.createServer(), {
 ```js
 // Usage through createServer options
 var layout = require('bigpipe-layout')
-  , Pipe = require('bigpipe');
+  , BigPipe = require('bigpipe');
 
 //
 // Add valid path to base layout.
 //
 layout.options = { base: '/path/to/base/layout.ejs' };
 
-var pipe = Bigpipe.createServer(8080, {
+var pipe = BigPipe.createServer(8080, {
       pages: __dirname + '/pages',
       public: __dirname + '/public',
       plugins: [ layout ]
