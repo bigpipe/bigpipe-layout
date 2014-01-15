@@ -1,7 +1,7 @@
 # Layout
 
 [![Build
-Status](https://travis-ci.org/Moveo/bigpipe-layout.png)](https://travis-ci.org/Moveo/bigpipe-layout)
+Status](https://travis-ci.org/bigpipe/bigpipe-layout.png)](https://travis-ci.org/bigpipe/bigpipe-layout)
 [![NPM version](https://badge.fury.io/js/bigpipe-layout.png)](http://badge.fury.io/js/bigpipe-layout)
 
 [Bigpipe] plugin that will provide an easy method to add a general layout to
@@ -9,7 +9,7 @@ pages. The Bigpipe#Temper instance is used to load your provided layout. The
 template engine of the file is automatically detected. The page is supplied to
 the layout as `partial` by default, changable through options#key.
 
-[Bigpipe]: https://github.com/3rd-Eden/bigpipe
+[Bigpipe]: https://github.com/bigpipe/bigpipe
 
 ## Features
 
@@ -23,7 +23,7 @@ Example of layout file using the [embedded js] template egine
 <div><%- partial %></div>
 ```
 
-[Temper]: https://github.com/3rd-Eden/temper
+[Temper]: https://github.com/bigpipe/temper
 [embedded js]: https://github.com/visionmedia/ejs
 
 ## Installation
