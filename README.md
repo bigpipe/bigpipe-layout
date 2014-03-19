@@ -1,7 +1,7 @@
 # Layout
 
 [![Build
-Status](https://travis-ci.org/bigpipe/bigpipe-layout.png)](https://travis-ci.org/bigpipe/bigpipe-layout)
+Status](https://travis-ci.org/bigpipe/plugin-layout.png)](https://travis-ci.org/bigpipe/plugin-layout)
 [![NPM version](https://badge.fury.io/js/bigpipe-layout.png)](http://badge.fury.io/js/bigpipe-layout)
 
 [Bigpipe] plugin that will provide an easy method to add a general layout to
