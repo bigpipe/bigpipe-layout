@@ -50,9 +50,9 @@ layout.options = { base: '/path/to/base/layout.ejs' };
 layout.key = 'custom';
 
 var pipe = new BigPipe(http.createServer(), {
-    pages: __dirname + '/pages',
-    public: __dirname + '/public'
-  }).listen(8080).use(layout);
+  pages: __dirname + '/pages',
+  public: __dirname + '/public'
+}).listen(8080).use(layout);
 ```
 
 ```js
@@ -66,10 +66,10 @@ var layout = require('bigpipe-layout')
 layout.options = { base: '/path/to/base/layout.ejs' };
 
 var pipe = BigPipe.createServer(8080, {
-      pages: __dirname + '/pages',
-      public: __dirname + '/public',
-      plugins: [ layout ]
-    });
+  pages: __dirname + '/pages',
+  public: __dirname + '/public',
+  plugins: [ layout ]
+});
 ```
 
 ## License
