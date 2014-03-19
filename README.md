@@ -1,8 +1,12 @@
 # Layout
 
-[![Build
-Status](https://travis-ci.org/bigpipe/plugin-layout.png)](https://travis-ci.org/bigpipe/plugin-layout)
-[![NPM version](https://badge.fury.io/js/bigpipe-layout.png)](http://badge.fury.io/js/bigpipe-layout)
+[![Build Status][status]](https://travis-ci.org/bigpipe/plugin-layout)
+[![NPM version][npmimgurl]](http://badge.fury.io/js/bigpipe-layout)
+[![Coverage Status][coverage]](http://coveralls.io/r/bigpipe/plugin-layout?branch=master)
+
+[status]: https://travis-ci.org/bigpipe/plugin-layout.png
+[npmimgurl]: https://badge.fury.io/js/bigpipe-layout.png
+[coverage]: http://coveralls.io/repos/bigpipe/plugin-layout/badge.png?branch=master
 
 [Bigpipe] plugin that will provide an easy method to add a general layout to
 pages. The Bigpipe#Temper instance is used to load your provided layout. The

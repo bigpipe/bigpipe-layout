@@ -4,18 +4,22 @@
   "description": "Supply default layout to Bigpipe pages.",
   "main": "index.js",
   "devDependencies": {
-    "chai": "1.7.x",
-    "mocha": "1.11.x",
-    "pre-commit": "0.0.x",
-    "ejs": "0.8.x",
-    "bigpipe": "git://github.com/3rd-Eden/bigpipe.git#master"
+    "bigpipe": "~0.1.1",
+    "chai": "~1.9.0",
+    "coveralls": "~2.8.0",
+    "ejs": "~0.8.5",
+    "istanbul": "~0.2.6",
+    "mocha": "~1.18.0",
+    "mocha-lcov-reporter": "~0.0.1",
+    "pre-commit": "~0.0.4"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/Moveo/bigpipe-layout.git"
   },
   "scripts": {
-    "test": "NODE_ENV=testing ./node_modules/.bin/mocha $(find test -name '*.test.js')"
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha $(find test -name '*.test.js')",
+    "coverage": "NODE_ENV=test ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true && rm -rf ./coverage"
   },
   "keywords": [
     "Bigpipe",
