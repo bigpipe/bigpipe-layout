@@ -4,14 +4,14 @@
   "description": "Supply default layout to Bigpipe pages.",
   "main": "index.js",
   "devDependencies": {
-    "bigpipe": "~0.1.1",
+    "bigpipe": "~0.3.0",
     "chai": "~1.9.0",
     "coveralls": "~2.8.0",
     "ejs": "~0.8.5",
     "istanbul": "~0.2.6",
     "mocha": "~1.18.0",
     "mocha-lcov-reporter": "~0.0.1",
-    "pre-commit": "~0.0.4"
+    "pre-commit": "~0.0.5"
   },
   "repository": {
     "type": "git",
