@@ -1,8 +1,4 @@
-# Layout
-
-[![Build Status][status]](https://travis-ci.org/bigpipe/plugin-layout)
-[![NPM version][npmimgurl]](http://badge.fury.io/js/bigpipe-layout)
-[![Coverage Status][coverage]](http://coveralls.io/r/bigpipe/plugin-layout?branch=master)
+# Layout [![Build Status][status]](https://travis-ci.org/bigpipe/plugin-layout) [![NPM version][npmimgurl]](http://badge.fury.io/js/bigpipe-layout) [![Coverage Status][coverage]](http://coveralls.io/r/bigpipe/plugin-layout?branch=master)
 
 [status]: https://travis-ci.org/bigpipe/plugin-layout.png
 [npmimgurl]: https://badge.fury.io/js/bigpipe-layout.png
