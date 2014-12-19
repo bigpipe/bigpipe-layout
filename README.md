@@ -1,3 +1,5 @@
+## This plugin is deprecated, as the new pagelet-only structure, will provide the same functionality through the  [bootstrap Pagelet](https://github.com/bigpipe/bootstrap-pagelet)
+
 # Layout [![Build Status][status]](https://travis-ci.org/bigpipe/plugin-layout) [![NPM version][npmimgurl]](http://badge.fury.io/js/bigpipe-layout) [![Coverage Status][coverage]](http://coveralls.io/r/bigpipe/plugin-layout?branch=master)
 
 [status]: https://travis-ci.org/bigpipe/plugin-layout.png
